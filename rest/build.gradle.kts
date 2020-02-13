@@ -13,6 +13,7 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     swaggerCodegen("org.openapitools:openapi-generator-cli:4.2.3")
     swaggerUI ("org.webjars:swagger-ui:3.25.0")
+    implementation( "org.mapstruct:mapstruct:${Versions.mapstruct}" )
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
         exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
     }

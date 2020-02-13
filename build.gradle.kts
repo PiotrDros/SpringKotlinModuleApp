@@ -1,3 +1,4 @@
+import io.spring.gradle.dependencymanagement.dsl.DependencyManagementExtension
 import org.springframework.boot.gradle.plugin.SpringBootPlugin
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
@@ -8,7 +9,7 @@ plugins {
 
 buildscript {
     dependencies {
-        classpath ("org.springframework.boot:spring-boot-gradle-plugin:2.2.4.RELEASE")
+        classpath ("org.springframework.boot:spring-boot-gradle-plugin:${Versions.springBoot}")
     }
     repositories {
         mavenCentral()
@@ -25,6 +26,7 @@ subprojects {
     apply(plugin = "org.jetbrains.kotlin.jvm")
 
 
+
     repositories {
         mavenCentral()
     }
@@ -36,10 +38,11 @@ subprojects {
         }
     }
 
-    the<io.spring.gradle.dependencymanagement.dsl.DependencyManagementExtension>().apply {
+    the<DependencyManagementExtension>().apply {
         imports {
             mavenBom(org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES)
         }
+
     }
 }
 
