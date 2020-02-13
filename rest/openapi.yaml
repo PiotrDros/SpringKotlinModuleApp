@@ -1,0 +1,53 @@
+openapi: 3.0.0
+info:
+  title: SpringBoot kotlin REST API
+  description: SpringBoot kotlin REST API
+  version: 1.0.0
+tags:
+  - name: User
+    description: Users resource
+
+paths:
+  /users:
+    post:
+      tags:
+        - User
+      summary: Add a user
+      operationId: addUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+    get:
+      tags:
+        - User
+      summary: Get users
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+      required:
+        - firstName
+        - lastName

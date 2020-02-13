@@ -1,0 +1,6 @@
+{
+  "modelPackage": "com.example.model",
+  "apiPackage": "com.example.api",
+  "interfaceOnly": true,
+  "hideGenerationTimestamp": true
+}
