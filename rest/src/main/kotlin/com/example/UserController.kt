@@ -2,6 +2,8 @@ package com.example
 
 import com.example.api.UserApi
 import com.example.model.User
+import com.example.user.UserMapper
+import org.mapstruct.factory.Mappers
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
@@ -12,6 +14,11 @@ class UserController(val service: UserService) : UserApi {
 
     override fun addUser(user: User): ResponseEntity<User> {
         println("User added")
+
+
+        val converter = Mappers.getMapper(UserMapper::class.java)
+        val map = converter.map(user)
+        print(user)
         return   ResponseEntity(HttpStatus.OK)
     }
 
