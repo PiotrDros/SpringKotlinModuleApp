@@ -1,11 +1,15 @@
 import org.hidetake.gradle.swagger.generator.GenerateSwaggerCode
 import org.hidetake.gradle.swagger.generator.GenerateSwaggerUI
+import org.jetbrains.kotlin.kapt3.base.Kapt.kapt
 
 plugins {
     id("org.hidetake.swagger.generator") version "2.18.1"
     kotlin("plugin.spring")
+    kotlin("kapt")
 }
-
+kapt {
+    correctErrorTypes  = true
+}
 
 dependencies {
     implementation( project(":core", "default"))
@@ -13,7 +17,12 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     swaggerCodegen("org.openapitools:openapi-generator-cli:4.2.3")
     swaggerUI ("org.webjars:swagger-ui:3.25.0")
-    implementation( "org.mapstruct:mapstruct:${Versions.mapstruct}" )
+//    implementation( "org.mapstruct:mapstruct:${Versions.mapstruct}" )
+    compile("org.mapstruct:mapstruct-jdk8:1.2.0.Final")
+    kapt("org.mapstruct:mapstruct-processor:1.2.0.Final")
+
+//    implementation( "org.mapstruct:mapstruct:${Versions.mapstruct}")
+
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
         exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
     }
