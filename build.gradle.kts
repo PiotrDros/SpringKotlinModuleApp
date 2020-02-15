@@ -22,10 +22,7 @@ subprojects {
     version = "0.0.1-SNAPSHOT"
 
     apply(plugin = "io.spring.dependency-management")
-
     apply(plugin = "org.jetbrains.kotlin.jvm")
-
-
 
     repositories {
         mavenCentral()
@@ -40,7 +37,7 @@ subprojects {
 
     the<DependencyManagementExtension>().apply {
         imports {
-            mavenBom(org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES)
+            mavenBom(SpringBootPlugin.BOM_COORDINATES)
         }
 
     }
